@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN \
     apt-get update && apt-get install -y --no-install-recommends \
+      base-files \
       ca-certificates \
       gcc \
       netbase \
@@ -17,6 +18,8 @@ RUN set -x \
         /etc/ssl/certs/ca-certificates.crt \
         /usr/share/zoneinfo \
         /etc/services \
+        /etc/os-release \
+        /usr/lib/os-release \
         /lib/"$(gcc -print-multiarch)"/libpthread.so.* \
     && while [ "$#" -gt 0  ]; do \
         f="$1"; shift; \
